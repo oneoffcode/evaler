@@ -83,7 +83,6 @@ func isSymbol(token string) bool {
 func convert2postfix(tokens []string) []string {
 	var stack stack.Stack
 	var result []string
-	fmt.Printf("tokens: %v \n", tokens)
 	for _, token := range tokens {
 
 		stackString := fmt.Sprint(stack) // HACK - debugging
@@ -311,17 +310,12 @@ func evaluatePostfix(postfix []string) (*big.Rat, error) {
 // trailing spaces, then splits on spaces
 //
 func Tokenise(expr string) []string {
-fmt.Printf("expr: %v\n", expr)
 	spaced := unary_minus_rx.ReplaceAllString(expr, "$1 @")
-fmt.Printf("spaced1: %v\n", spaced)
 	spaced = fp_rx.ReplaceAllString(spaced, " ${1} ")
-fmt.Printf("spaced2: %v\n", spaced)
 	spaced = functions_rx.ReplaceAllString(spaced, " ${1} ")
-fmt.Printf("spaced3: %v\n", spaced)
 
 	if symbols_rx != nil {
 		spaced = symbols_rx.ReplaceAllString(spaced, " ${1} ")
-fmt.Printf("spaced4: %v\n", spaced)
 	}
 
 	symbols := []string{"(", ")"}
@@ -331,7 +325,6 @@ fmt.Printf("spaced4: %v\n", spaced)
 
 	stripped := whitespace_rx.ReplaceAllString(strings.TrimSpace(spaced), "|")
 	result := strings.Split(stripped, "|")
-	fmt.Printf("toks: %v\n", stripped)
 	return result
 }
 
