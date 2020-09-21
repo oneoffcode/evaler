@@ -83,6 +83,7 @@ func isSymbol(token string) bool {
 func convert2postfix(tokens []string) []string {
 	var stack stack.Stack
 	var result []string
+	fmt.Printf("tokens: %v \n", tokens)
 	for _, token := range tokens {
 
 		stackString := fmt.Sprint(stack) // HACK - debugging
