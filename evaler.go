@@ -302,7 +302,7 @@ func evaluatePostfix(postfix []string) (*big.Rat, error) {
 // trailing spaces, then splits on spaces
 //
 func Tokenise(expr string) []string {
-
+fmt.Printf("expr: %v\n", expr)
 	spaced := unary_minus_rx.ReplaceAllString(expr, "$1 @")
 	spaced = fp_rx.ReplaceAllString(spaced, " ${1} ")
 	spaced = functions_rx.ReplaceAllString(spaced, " ${1} ")
