@@ -168,7 +168,13 @@ func evaluatePostfix(postfix []string) (*big.Rat, error) {
 		stackString += ""                // HACK - debugging
 
 		if isOperand(token) {
-			bigrat := new(big.Rat)
+			var bigrat interface{}
+			if strings.Contains(token, ".") {
+				bigrat = new(big.Rat)
+			} else {
+				bigrat = new(big.Int)
+			}
+			
 			if _, err := fmt.Sscan(token, bigrat); err != nil {
 				return nil, fmt.Errorf("unable to scan %s", token)
 			}
