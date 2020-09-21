@@ -317,6 +317,7 @@ func Tokenise(expr string) []string {
 
 	stripped := whitespace_rx.ReplaceAllString(strings.TrimSpace(spaced), "|")
 	result := strings.Split(stripped, "|")
+	fmt.Printf("toks: %v\n", stripped)
 	return result
 }
 
