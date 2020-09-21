@@ -16,7 +16,7 @@ import (
 )
 
 // all regex's here
-var fp_rx = regexp.MustCompile(`(\d([xobXOB])\d*(?:\.\d+)?)`) // simple fp number
+var fp_rx = regexp.MustCompile(`((0[xobXOB]{0,1})\d*(?:\.\d+)?)`) // simple fp number
 //var fp_rx = regexp.MustCompile(`(\d+(?:\.\d+)?)`) // simple fp number
 var functions_rx = regexp.MustCompile(`(sin|cos|tan|ln|arcsin|arccos|arctan|sqrt)`)
 var symbols_rx *regexp.Regexp // TODO used as a mutable global variable!!
