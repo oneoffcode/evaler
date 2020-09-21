@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/soniah/evaler/stack"
+	"github.com/oneoffcode/evaler/stack"
 )
 
 // all regex's here
