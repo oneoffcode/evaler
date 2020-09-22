@@ -18,6 +18,7 @@ import (
 // all regex's here
 var fp_rx = regexp.MustCompile(`((0[xX]{0,1}[\dA-Fa-f]+)|(0[oO][0-7]+)|(0[bB][0-1]+)|(\d+(?:\.\d+)?)|(\d+))`) // simple fp number
 //var fp_rx = regexp.MustCompile(`(\d+(?:\.\d+)?)`) // simple fp number
+var functions_list = `sin cos tan ln arcsin arccos arctan sqrt`
 var functions_rx = regexp.MustCompile(`(sin|cos|tan|ln|arcsin|arccos|arctan|sqrt)`)
 var symbols_rx *regexp.Regexp // TODO used as a mutable global variable!!
 var unary_minus_rx = regexp.MustCompile(`((?:^|[-+^%*/<>!=(])\s*)-`)
@@ -27,6 +28,10 @@ var symbolTable map[string]string // TODO used as a mutable global variable!!
 
 // Operator '@' means unary minus
 var operators = []string{"-", "+", "*", "/", "<", ">", "@", "^", "**", "%", "!=", "==", ">=", "<="}
+
+func Functions() string {
+	return functions_list
+}
 
 // prec returns the operator's precedence
 func prec(op string) (result int) {
